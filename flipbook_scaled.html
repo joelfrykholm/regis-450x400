@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Flipbook</title>
+  <script src="jquery-3.7.1.min.js"></script>
+  <script src="turn.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: #000;
+      overflow: hidden;
+    }
+    .scaling-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100vw;
+      height: 100vh;
+    }
+    #flipbook-container {
+      transform-origin: top left;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+    }
+    #flipbook {
+      width: 800px;
+      height: 450px;
+    }
+    .page {
+      width: 400px;
+      height: 450px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  </style>
+</head>
+<body>
+<div class="scaling-wrapper">
+  <div id="flipbook-container">
+    <div id="flipbook">
+      <!-- Pages will be loaded here -->
+    </div>
+  </div>
+</div>
+
+<script>
+  const flipbookWidth = 800;
+  const flipbookHeight = 450;
+
+  function scaleFlipbook() {
+    const scaleX = window.innerWidth / flipbookWidth;
+    const scaleY = window.innerHeight / flipbookHeight;
+    const scale = Math.min(scaleX, scaleY);
+    const flipbookContainer = document.getElementById("flipbook-container");
+    flipbookContainer.style.transform = "translate(-50%, -50%) scale(" + scale + ")";
+  }
+
+  window.addEventListener("resize", scaleFlipbook);
+  window.addEventListener("load", function() {
+    $('#flipbook').turn({
+      width: flipbookWidth,
+      height: flipbookHeight,
+      autoCenter: true
+    });
+    scaleFlipbook();
+  });
+</script>
+</body>
+</html>
