@@ -5,8 +5,26 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Flipbook</title>
-<script src="jquery-3.7.1.min.js"></script>
-<script src="turn.js"></script>
+<script src="jquery-3.7.1.min.js">
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowRight') {
+      $('#flipbook').turn('next');
+    } else if (event.key === 'ArrowLeft') {
+      $('#flipbook').turn('previous');
+    }
+  });
+
+</script>
+<script src="turn.js">
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowRight') {
+      $('#flipbook').turn('next');
+    } else if (event.key === 'ArrowLeft') {
+      $('#flipbook').turn('previous');
+    }
+  });
+
+</script>
 <style>
     body {
       background: #4f4f4f;
@@ -56,6 +74,15 @@
       height: 675,
       autoCenter: true
     });
-  </script>
+  
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'ArrowRight') {
+      $('#flipbook').turn('next');
+    } else if (event.key === 'ArrowLeft') {
+      $('#flipbook').turn('previous');
+    }
+  });
+
+</script>
 </body>
 </html>
